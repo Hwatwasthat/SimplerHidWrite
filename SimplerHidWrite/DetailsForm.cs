@@ -5,7 +5,9 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-using IliumVR.Bindings.Win32.Hid;
+using PInvoke;
+
+using IliumVR.Tools.SimplerHidWrite.Wrappers;
 
 namespace IliumVR.Tools.SimplerHidWrite
 {
@@ -205,13 +207,13 @@ namespace IliumVR.Tools.SimplerHidWrite
 			lblVendName.Text += " " + dev.Manufacturer;
 			lblSerialNum.Text += " " + dev.SerialNumber;
 
-			Attributes att = dev.Attributes;
+			Hid.HiddAttributes att = dev.Attributes;
 
 			lblVid.Text += " " + att.VendorId.ToString("X4");
 			lblPid.Text += " " + att.ProductId.ToString("X4");
 			lblRev.Text += " " + att.VersionNumber.ToString("X4");
 
-			Caps caps = dev.PreparsedData.Capabilities;
+			Hid.HidpCaps caps = dev.Capabilities;
 
 			lblInputSize.Text += " " + caps.InputReportByteLength + " bytes";
 			lblOutputSize.Text += " " + caps.OutputReportByteLength + " bytes";

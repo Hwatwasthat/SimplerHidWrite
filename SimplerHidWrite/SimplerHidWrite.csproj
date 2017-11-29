@@ -37,18 +37,37 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IliumVR.Bindings.Win32.Hid">
-      <HintPath>..\..\..\Bindings\Win32\Hid\bin\Release\IliumVR.Bindings.Win32.Hid.dll</HintPath>
+    <Reference Include="PInvoke.Hid, Version=0.5.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
+      <HintPath>..\packages\PInvoke.Hid.0.5.111\lib\net45\PInvoke.Hid.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="IliumVR.Bindings.Win32.SetupApi">
-      <HintPath>..\..\..\Bindings\Win32\SetupApi\bin\Release\IliumVR.Bindings.Win32.SetupApi.dll</HintPath>
+    <Reference Include="PInvoke.Kernel32, Version=0.5.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
+      <HintPath>..\packages\PInvoke.Kernel32.0.5.111\lib\net45\PInvoke.Kernel32.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="IliumVR.Bindings.Win32.User32">
-      <HintPath>..\..\..\Bindings\Win32\User32\bin\Release\IliumVR.Bindings.Win32.User32.dll</HintPath>
+    <Reference Include="PInvoke.SetupApi, Version=0.5.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
+      <HintPath>..\packages\PInvoke.SetupApi.0.5.111\lib\net45\PInvoke.SetupApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PInvoke.User32, Version=0.5.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
+      <HintPath>..\packages\PInvoke.User32.0.5.111\lib\net45\PInvoke.User32.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PInvoke.Windows.Core, Version=0.5.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
+      <HintPath>..\packages\PInvoke.Windows.Core.0.5.111\lib\net35\PInvoke.Windows.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PInvoke.Windows.ShellScalingApi, Version=0.5.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
+      <HintPath>..\packages\PInvoke.Windows.ShellScalingApi.0.5.111\lib\net45\PInvoke.Windows.ShellScalingApi.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="Validation, Version=2.4.0.0, Culture=neutral, PublicKeyToken=2fc06f0d701809a7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Validation.2.4.15\lib\net45\Validation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlExtensions.cs" />
@@ -58,6 +77,7 @@
     <Compile Include="DetailsForm.Designer.cs">
       <DependentUpon>DetailsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Wrappers\HidDevice.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +87,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RingQueue.cs" />
+    <Compile Include="Wrappers\ReportType.cs" />
+    <Compile Include="Wrappers\SafeOverlapped.cs" />
     <EmbeddedResource Include="DetailsForm.resx">
       <DependentUpon>DetailsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +105,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

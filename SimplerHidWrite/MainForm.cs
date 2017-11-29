@@ -13,10 +13,11 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
-using IliumVR.Bindings.Win32.Hid;
-using IliumVR.Bindings.Win32.SetupApi;
-using IliumVR.Bindings.Win32.User32;
+using PInvoke;
+
 using System.Reflection;
+
+using IliumVR.Tools.SimplerHidWrite.Wrappers;
 
 namespace IliumVR.Tools.SimplerHidWrite
 {
@@ -77,7 +78,7 @@ namespace IliumVR.Tools.SimplerHidWrite
 				return;
 			}
 
-			Attributes att = hdev.Attributes;
+			Hid.HiddAttributes att = hdev.Attributes;
 
 			item.Text = hdev.Product;
 			item.SubItems.Add(hdev.Manufacturer);
@@ -197,7 +198,7 @@ namespace IliumVR.Tools.SimplerHidWrite
 				currentDevice = null;
 			}
 
-			Caps caps = currentDevice.PreparsedData.Capabilities;
+			Hid.HidpCaps caps = currentDevice.Capabilities;
 			int numBytes = caps.InputReportByteLength;
 			numBytes = Math.Max(numBytes, caps.OutputReportByteLength);
 			numBytes = Math.Max(numBytes, caps.FeatureReportByteLength);
@@ -235,7 +236,7 @@ namespace IliumVR.Tools.SimplerHidWrite
 				return;
 
 			Queue<string> list = new Queue<string>(64);
-			byte[] readBuffer = new byte[dev.PreparsedData.Capabilities.InputReportByteLength];
+			byte[] readBuffer = new byte[dev.Capabilities.InputReportByteLength];
 
 			RingQueue<double> timeQueue = new RingQueue<double>(20);
 			long updateMs = 16;
